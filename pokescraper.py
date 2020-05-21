@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup as bs
 import pandas as pd
 
-num_pokemon=10
+num_pokemon=890
 
 pokedex={'Names':[], 'Primary Typing':[], 'Secondary Typing':[], 'HP':[], 'Attack':[], 'Defense':[], 'Sp. Atk':[], 'Sp. Def':[], 'Speed':[], 'Total':[]}
 
