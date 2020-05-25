@@ -4,7 +4,7 @@ import pandas as pd
 
 num_pokemon=890
 
-pokedex={'Names':[], 'Primary Typing':[], 'Secondary Typing':[], 'HP':[], 'Attack':[], 'Defense':[], 'Sp. Atk':[], 'Sp. Def':[], 'Speed':[], 'Total':[]}
+pokedex={'Dex No.':[], 'Names':[], 'Primary Typing':[], 'Secondary Typing':[], 'HP':[], 'Attack':[], 'Defense':[], 'Sp. Atk':[], 'Sp. Def':[], 'Speed':[], 'Total':[]}
 
 for i in range(1,num_pokemon+1):
 	res=requests.get('https://pokemondb.net/pokedex/' + str(i))
@@ -27,6 +27,7 @@ for i in range(1,num_pokemon+1):
 	spd=stats[5].get_text()
 	tot=stats[6].get_text()
 
+	pokedex['Dex No.'].append(i)
 	pokedex['Names'].append(name)
 	pokedex['Primary Typing'].append(primary)
 	pokedex['Secondary Typing'].append(secondary)
@@ -40,4 +41,4 @@ for i in range(1,num_pokemon+1):
 
 
 pokeframe = pd.DataFrame.from_dict(pokedex)
-print(pokeframe)
+pokeframe.to_csv('pokedex.csv')
